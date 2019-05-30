@@ -62,7 +62,26 @@ function qod_scripts() {
 	// try adding the quotes with css ::after and ::before (psuedo element)
 	// TODO add your own script.js file wp_enqueue_script
 
-	wp_enqueue_style('inhabitent-fontawesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+
+	$script_url = get_template_directory_uri() . "/build/js/scripts.min.js";
+	wp_enqueue_script("jquery");
+	wp_enqueue_script("qod-scripts", $script_url, array("jquery"), false, true);
+	// WP AJAX version
+	// wp_localize_script("qod-scripts", "api_vars", array(
+	// 	"ajax_url" => admin_url("admin-ajax.php"),
+	// 	"status_nonce" =>wp_create_nonce("qod_status_nonce"),
+	// 	"post_id" => get_the_ID()
+	// ));
+		wp_localize_script('qod-scripts', 'api_vars', array(
+		'rest_url' => rest_url(),
+		'wpapi_nonce' =>wp_create_nonce('wp_rest'),
+		'post_id' => get_the_ID()
+	));
+
+
+	// wp_enqueue_style('inhabitent-fontawesome', 'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+	wp_enqueue_style('qod-starter-fontawesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+	
 	wp_enqueue_script( 'qod-starter-navigation', get_template_directory_uri() . '/build/js/navigation.min.js', array(), '20151215', true );
 	wp_enqueue_script( 'qod-starter-skip-link-focus-fix', get_template_directory_uri() . '/build/js/skip-link-focus-fix.min.js', array(), '20151215', true );
 	
@@ -90,3 +109,6 @@ require get_template_directory() . '/inc/metaboxes.php';
  * Custom WP API modifications.
  */
 require get_template_directory() . '/inc/api.php';
+
+
+

@@ -221,6 +221,34 @@ th {
 /*--------------------------------------------------------------
 # Embedded Fonts
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'Exo Web';
+  src: url("../../assets/fonts/Exo-Light.eot");
+  src: url("../../assets/fonts/Exo-Light.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Exo-Light.woff2") format("woff2"), url("../../assets/fonts/Exo-Light.woff") format("woff"), url("../../assets/fonts/Exo-Light.ttf") format("truetype"), url("../../assets/fonts/Exo-Light.svg#Exo-Light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Exo Web';
+  src: url("../../assets/fonts/Exo-LightItalic.eot");
+  src: url("../../assets/fonts/Exo-LightItalic.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Exo-LightItalic.woff2") format("woff2"), url("../../assets/fonts/Exo-LightItalic.woff") format("woff"), url("../../assets/fonts/Exo-LightItalic.ttf") format("truetype"), url("../../assets/fonts/Exo-LightItalic.svg#Exo-LightItalic.svg") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Exo Web';
+  src: url("../../assets/fonts/Exo-Medium.eot");
+  src: url("../../assets/fonts/Exo-Medium.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Exo-Medium.woff2") format("woff2"), url("../../assets/fonts/Exo-Medium.woff") format("woff"), url("../../assets/fonts/Exo-Medium.ttf") format("truetype"), url("../../assets/fonts/Exo-Medium.svg#Exo-Medium") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Exo Web';
+  src: url("../../assets/fonts/Exo-MediumItalic.eot");
+  src: url("../../assets/fonts/Exo-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Exo-MediumItalic.woff2") format("woff2"), url("../../assets/fonts/Exo-MediumItalic.woff") format("woff"), url("../../assets/fonts/Exo-MediumItalic.ttf") format("truetype"), url("../../assets/fonts/Exo-MediumItalic.svg#Exo-MediumItalic") format("svg");
+  font-weight: bold;
+  font-style: italic; }
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
@@ -411,11 +439,11 @@ textarea {
 --------------------------------------------------------------*/
 /* Links */
 a {
-  color: royalblue; }
+  color: #00cc00; }
   a:visited {
-    color: purple; }
+    color: #00cc00; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: #009900; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -571,6 +599,12 @@ a {
   clear: both;
   margin: 0 0 1.5rem; }
 
+.site {
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.5;
+  font-family: 'Exo Web'; }
+
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
@@ -593,3 +627,32 @@ object {
 --------------------------------------------------------------*/
 /* All Archives Page */
 /* Submit a Quote Page */
+* {
+  width: 1080px;
+  background: #222222; }
+
+.content-area::before {
+  font-family: "FontAwesome";
+  content: "\f10d";
+  font-size: 8rem;
+  color: #00cc00;
+  padding: 2rem; }
+
+.content-area::after {
+  font-family: "FontAwesome";
+  content: "\f10e";
+  font-size: 8rem;
+  color: #00cc00;
+  padding: 2rem; }
+
+#new-quote-button {
+  color: #00cc00;
+  background-color: transparent;
+  border: 2px solid #0c0;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  text-shadow: none;
+  font-size: 1.2rem;
+  max-width: 230px;
+  text-align: center; }

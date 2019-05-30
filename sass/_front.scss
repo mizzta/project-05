@@ -1,0 +1,34 @@
+* {
+  // border: 1px dashed #ffffff;
+  width: 1080px;
+  background: #222222;
+}
+
+.content-area::before {
+  font-family: "FontAwesome"; 
+  content: "\f10d";
+  font-size: 8rem;
+  color: #00cc00;
+  padding: 2rem;
+}
+
+.content-area::after {
+  font-family: "FontAwesome"; 
+  content: "\f10e";
+  font-size: 8rem;
+  color: #00cc00;
+  padding: 2rem;
+}
+
+#new-quote-button {
+  color: #00cc00;
+  background-color: transparent;
+  border: 2px solid #0c0;
+  border-radius: 3px;
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 1.2rem;
+  max-width: 230px;
+  text-align: center;
+}
+

@@ -13,6 +13,8 @@ $source_url = get_post_meta(get_the_ID(), '_qod_quote_source_url', true);
 
 ?>
 
+
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="entry-content">
 		<?php the_content(); ?>
