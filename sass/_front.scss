@@ -1,23 +1,90 @@
 * {
   // border: 1px dashed #ffffff;
-  width: 1080px;
   background: #222222;
 }
 
-.content-area::before {
-  font-family: "FontAwesome"; 
-  content: "\f10d";
-  font-size: 8rem;
-  color: #00cc00;
-  padding: 2rem;
+.container {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 2.5%;
+  width: 100%;
 }
 
-.content-area::after {
-  font-family: "FontAwesome"; 
-  content: "\f10e";
-  font-size: 8rem;
-  color: #00cc00;
-  padding: 2rem;
+
+
+img {
+  max-width: 100%;
+}
+.qod-logo {
+  img {
+    width: 300px;
+
+    @include tablet {
+      width: 500px;
+      background: red;
+    }
+    @include desktop {
+      width: 700px;
+      background: skyblue;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+
+
+@include desktop {
+  .content-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    // max-width: 100vw;
+    
+  }
+
+  .content-area::before {
+    font-family: 'FontAwesome';
+    content: '\f10d';
+    font-size: 8rem;
+    color: #00cc00;
+    padding: 2rem;
+  }
+
+  .content-area::after {
+    font-family: 'FontAwesome';
+    content: '\f10e';
+    font-size: 8rem;
+    color: #00cc00;
+    padding: 2rem;
+  }
+}
+
+.blog {
+.entry-content {
+  font-size: 1rem;
+  @include tablet {
+    font-size: 1.75rem;
+  }
+  @include desktop{
+    font-size: 2.5rem;
+  }
+}
+ }
+
+.entry-meta {
+  display: inline;
+  .entry-title {
+    font-size: 1.25rem;
+    font-weight: normal;
+  }
+  .source {
+    font-size: 1.25rem;
+    font-weight: normal;
+    font-style: italic;
+  }
 }
 
 #new-quote-button {
@@ -32,3 +99,11 @@
   text-align: center;
 }
 
+.site-info {
+  margin-top: 4.5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+ 
+}

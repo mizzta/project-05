@@ -44,7 +44,7 @@ alert('hello');
 
 
 
-$("#toggle-status").on("click", function (event) {
+$("#new-quote-button").on("click", function (event) {
     event.preventDefault();
 
     $.ajax({

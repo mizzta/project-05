@@ -33,9 +33,12 @@
 }
 
 .site {
-	// background: #222222;
+	background: #222222;
 	font-size: 16px;
 	color: #ffffff;
 	line-height: 1.5;
 	font-family: 'Exo Web';
+	a {
+		text-decoration: none;
+	}
 }

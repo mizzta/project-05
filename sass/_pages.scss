@@ -1,0 +1,33 @@
+//archives
+.browse-archives {
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    li {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      margin-right: 1.125rem;
+    }
+  }
+}
+
+//about
+.post-216 .page .type-page .status-publish .hentry {
+  &.entry-content {
+    font-size: 1rem;
+  }
+}
+
+//archive-category
+.archive .category {
+  background: pink;
+  h1.entry-title {
+    border-bottom: 1px dotted #fff;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+  }
+}
