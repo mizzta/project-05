@@ -20,7 +20,7 @@ get_header(); ?>
 				?>
 
 				<div class="quote-submission-wrapper">
-					<form name="quoteForm" id="quote-submission-form">
+					<form name="quoteForm" id="quote-submission-form" class="sub-form-input">
 						<div>
 							<label for="quote-author">Author of Quote</label>
 							<input type="text" name="quote_author" id="quote-author">

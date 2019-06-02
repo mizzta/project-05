@@ -1,75 +1,112 @@
+// IIFE immeditaley envoked function expression
 (function ($) {
 
-    // alert('hello');
-    // // all of your code goes
-    // $('body').append('hello world');
-    // $('.documents').always(function () {
-    //   });
-    
-add_action( 'wp_ajax_foobar', 'my_ajax_foobar_handler' );
+    // Document ready shorthand
+    $(function () {
+        let lastPage = '';
 
-$('#new-quote-button').click(function(){
-alert('hello');
+        // console.log(api_vars);
 
-    // var text = jQuery('textarea#textInput').val();
-    // var method = jQuery('select#methodOptions').val();
+        //TODO add Get request
 
-    if (text!='')
-    {
-        $.ajax({
-            url: 'http://localhost:8888/quote-on-dev/wp-json/wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1',
-            type: 'GET',
-            data: 'data=' + text + '&method='+ method,
-            dataType: 'html',
-            // success: function( message) {
-            //     jQuery('textarea#textOutput').val(message);
-            // }
-        });
-    }
-});
+        $('#new-quote-button').on('click', getRandomQuote);
+        $('#quote-submission-form').on('submit', postQuote);
 
 
+        function getRandomQuote(event) {
+            event.preventDefault();
+
+            lastPage = document.URL;
+
+            $.ajax({
+                method: 'get',
+                url: api_vars.rest_url + 'wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1'
+            }).done(function (data) {
+                // console.log(data);
+                const randomQuote = data[0];
+                // console.log(randomQuote);
+                //update the DOM with the returned quote
+
+                const $title = data[0].title.rendered;
+                const $content = data[0].content.rendered;
+                const $quoteSource = data[0]._qod_quote_source;
+                const $quoteSourceUrl = data[0]._qod_quote_source_url;
 
 
+                $('.entry-content').html($content);
+                $('.entry-meta .entry-title').html('&mdash; ' + $title + ', ');
+                $('.entry-meta .source').html(
+                `<a href='${$quoteSourceUrl}'>${$quoteSource}</a>`
+                );
 
-//   title
-// quote
-// quote source
-// quote source url
-
-// For the Ajax get request you are going to want to use a url like: `wp-json/wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1`
-
-// You would need the full url e.g. `http://localhost:8888/name-of-your-wp-folder/wp-json/wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1`
-
+                history.pushState(null, null, data[0].slug);
+                history.pushState(null, null, randomQuote.slug);
 
 
+            }).fail(function () {
+                // console.log(error);
 
-$("#new-quote-button").on("click", function (event) {
-    event.preventDefault();
+                // append a message telling the user something went wrong
+            });
 
-    $.ajax({
-        method: 'post',
-        // url: api_vars.ajax_url,
-        url: api_vars.rest_url + 'wp/v2/posts/' + api_vars.post_id,
-        data: {
-            // action: 'qod_status_ajax',
-            // security: api_vars.status_nonce,
-            // the_post_id: api_vars.post_id
-            "post_status": "draft"
-        },
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('X-WP-Nonce', api_vars.wpapi_nonce)
-        }
-    }).done(function (response) {
-        alert('Success! The status has been changed.');
-    });
-});
+            $(window).on('popstate', function () {
+                window.location.replace(lastPage);
+            });
+
+        }//end of getRandomQuote
+
+        //TODO add PostQuote
+        function postQuote(event) {
+            event.preventDefault();
 
 
+            const quoteAuthor = $('#quote-author').val();
+            const quoteContent = $('#quote-content').val();
+            const quoteSource = $('#quote-source').val();
+            const quoteSourceUrl = $('#quote-source-url').val();
+
+            if (quoteAuthor !== '') {
+                // check if the field is empty
+                postAjax();
+            } 
+
+            if (quoteContent !== '') {
+                // check if the field is empty
+                postAjax();
+            } 
+
+            if (quoteSource !== '') {
+                // check if the field is empty
+                postAjax();
+            } 
+
+            function postAjax() {
+                $.ajax({
+                    method: 'post',
+                    url: api_vars.rest_url + 'wp/v2/posts',
+                    data: {
+                        // TODO use the from input .val() for the title, content
+                        title: quoteAuthor,
+                        content: quoteContent,
+                        _qod_quote_source: quoteSource,
+                        _qod_quote_source_url: quoteSourceUrl,
+                        status: 'pending',
+                        // _qod_quote_source:
+                        // _qod_quote_source_url:
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('X-WP-Nonce', api_vars.wpapi_nonce);
+                    }
+                }).done(function () {
+                    console.log('great success');
+                    $('#quote-submission-form').slideUp(500);
+                }).fail(function () {
+                    console.log('not so great success');
+                });
+            } // end of postAjax
+        } //end of postQuote
+
+    });//end of doc ready
 
 
-
-
-})(jQuery); //end of js file
-
-
+})(jQuery);
