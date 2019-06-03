@@ -413,16 +413,17 @@ input[type="url"],
 input[type="password"],
 input[type="search"],
 textarea {
-  color: #666;
-  border: 1px solid #ccc;
-  border-radius: 3px; }
+  color: white;
+  border: 1px solid #00cc00;
+  border-radius: 3px;
+  margin-top: 1rem; }
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="url"]:focus,
   input[type="password"]:focus,
   input[type="search"]:focus,
   textarea:focus {
-    color: #111; }
+    color: white; }
 
 input[type="text"],
 input[type="email"],
@@ -657,8 +658,16 @@ object {
 --------------------------------------------------------------*/
 /* All Archives Page */
 /* Submit a Quote Page */
-.quote-submission .quote-submission-form .sub-form-input {
-  margin-bottom: 5rem; }
+.quote-submission .quote-submission-wrapper div {
+  margin-bottom: 2rem; }
+
+.quote-submission .quote-submission-wrapper .submit-button {
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #00cc00;
+  border: 1px solid #00cc00;
+  text-shadow: none; }
 
 * {
   background: #222222; }
@@ -676,12 +685,10 @@ img {
   width: 300px; }
   @media (min-width: 620px) {
     .qod-logo img {
-      width: 500px;
-      background: red; } }
+      width: 500px; } }
   @media (min-width: 1080px) {
     .qod-logo img {
       width: 700px;
-      background: skyblue;
       display: block;
       margin-left: auto;
       margin-right: auto; } }

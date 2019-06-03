@@ -6,9 +6,16 @@
 
 /* Submit a Quote Page */
 .quote-submission {
-    .quote-submission-form {
-        .sub-form-input{
-        margin-bottom: 5rem;
+    .quote-submission-wrapper{
+        div {
+            margin-bottom: 2rem;
+        }
+        .submit-button {
+            background: none;
+            box-shadow: none;
+            color: $color__site-main;
+            border: 1px solid $color__site-main;
+            text-shadow: none;
         }
     }
 }

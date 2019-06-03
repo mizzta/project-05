@@ -11,7 +11,7 @@
 
         $('#new-quote-button').on('click', getRandomQuote);
         $('#quote-submission-form').on('submit', postQuote);
-
+        $('.submit-success-message').hide();
 
         function getRandomQuote(event) {
             event.preventDefault();
@@ -36,7 +36,7 @@
                 $('.entry-content').html($content);
                 $('.entry-meta .entry-title').html('&mdash; ' + $title + ', ');
                 $('.entry-meta .source').html(
-                `<a href='${$quoteSourceUrl}'>${$quoteSource}</a>`
+                    `<a href='${$quoteSourceUrl}'>${$quoteSource}</a>`
                 );
 
                 history.pushState(null, null, data[0].slug);
@@ -60,6 +60,7 @@
             event.preventDefault();
 
 
+
             const quoteAuthor = $('#quote-author').val();
             const quoteContent = $('#quote-content').val();
             const quoteSource = $('#quote-source').val();
@@ -68,19 +69,20 @@
             if (quoteAuthor !== '') {
                 // check if the field is empty
                 postAjax();
-            } 
+            }
 
             if (quoteContent !== '') {
                 // check if the field is empty
                 postAjax();
-            } 
+            }
 
             if (quoteSource !== '') {
                 // check if the field is empty
                 postAjax();
-            } 
+            }
 
             function postAjax() {
+
                 $.ajax({
                     method: 'post',
                     url: api_vars.rest_url + 'wp/v2/posts',
@@ -100,6 +102,7 @@
                 }).done(function () {
                     console.log('great success');
                     $('#quote-submission-form').slideUp(500);
+                    $(".submit-success-message").show(200);
                 }).fail(function () {
                     console.log('not so great success');
                 });

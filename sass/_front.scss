@@ -21,11 +21,9 @@ img {
 
     @include tablet {
       width: 500px;
-      background: red;
     }
     @include desktop {
       width: 700px;
-      background: skyblue;
       display: block;
       margin-left: auto;
       margin-right: auto;
